@@ -77,3 +77,16 @@ steps:
       $(version)
 # -----------  paso para compilar y hacer commit
 
+
+# -------- paso  publicar en azure
+# para borrar, crear y mostrar el resultado del contenedor dentro de azure
+- task: AzureCLI@1
+  inputs:
+    connectedServiceNameARM: 'AzureCloud-test'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      az container delete --resource-group $(resourceGroup) --name $(containerName) --yes
+      az container create --resource-group $(resourceGroup) --name $(containerName) --image $(imageName):$(version) --dns-name-label $(dnsName) --ports 8080
+      az container show --resource-group $(resourceGroup) --name $(containerName) --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
+
+# -------- paso para publicar en azure
