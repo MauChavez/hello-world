@@ -54,3 +54,12 @@ steps:
       $version=$pomXml.project.version
       Write-Host "##vso[task.setvariable variable=version]$version"
 # -----------------    obtendra la version del proyecto ------------------
+
+
+# -----------  paso para realizar login con docker hub
+- task: Docker@2
+  displayName: Login to Docker Hub
+  inputs:
+    command: login
+    containerRegistry: docker-hub
+# -----------  paso para realizar login con docker hub
