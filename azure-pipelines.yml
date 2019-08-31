@@ -15,6 +15,19 @@ variables:
   dnsName: 'hello-world-06-123456'
 # -----------------    variables ------------------
 
+
+# -----------------    pasos con maven ------------------
+#pasos que ejecutara maven poco a poco
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    goals: 'package'
+# -----------------    pasos con maven ------------------
 pool:
   vmImage: 'ubuntu-latest'
 
