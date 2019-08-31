@@ -6,6 +6,15 @@
 trigger:
 - master
 
+# -----------------    variables ------------------
+# variables global que existiran dentro de todo el pipeline
+variables:
+  resourceGroup: 'microservices'
+  containerName: 'hello-world-6'
+  imageName: 'devs4j/hello-world-06'
+  dnsName: 'hello-world-06-123456'
+# -----------------    variables ------------------
+
 pool:
   vmImage: 'ubuntu-latest'
 
