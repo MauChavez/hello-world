@@ -43,3 +43,14 @@ steps:
     goals: 'package'
 
 # -----------------    pasos con maven ------------------
+
+
+# -----------------    obtendra la version del proyecto ------------------
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      [xml]$pomXml = Get-Content .\pom.xml
+      $version=$pomXml.project.version
+      Write-Host "##vso[task.setvariable variable=version]$version"
+# -----------------    obtendra la version del proyecto ------------------
