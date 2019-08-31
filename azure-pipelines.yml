@@ -17,7 +17,7 @@ variables:
 
 
 # -----------------    pasos con maven ------------------
-#pasos que ejecutara maven poco a poco
+# pasos que ejecutara maven poco a poco
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -27,6 +27,7 @@ variables:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+
 # -----------------    pasos con maven ------------------
 pool:
   vmImage: 'ubuntu-latest'
