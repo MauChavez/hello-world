@@ -16,6 +16,20 @@ variables:
 # -----------------    variables ------------------
 
 
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+
+
+
 # -----------------    pasos con maven ------------------
 # pasos que ejecutara maven poco a poco
 - task: Maven@3
@@ -29,14 +43,3 @@ variables:
     goals: 'package'
 
 # -----------------    pasos con maven ------------------
-pool:
-  vmImage: 'ubuntu-latest'
-
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
